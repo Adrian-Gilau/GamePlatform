@@ -7,16 +7,20 @@ public class GamePlatform
     {
 
         double affectedSpeed = initalSpeed;
+        int characterLife = 10;
+
         foreach (var inclination in inclinations)
         {
-            if (inclination == 30)
+            affectedSpeed = affectedSpeed + (inclination * -1);
+            if (affectedSpeed < 0)
             {
-                affectedSpeed -= 30;
-            } else if (inclination == -45)
-            {
-                affectedSpeed += 45;
+                characterLife--;
+                affectedSpeed = 0;
+                break;
             }
         }
+        
+
         return affectedSpeed;
     }
     public static void Main(string[] args)
